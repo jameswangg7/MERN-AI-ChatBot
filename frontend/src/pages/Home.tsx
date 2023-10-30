@@ -1,9 +1,10 @@
 import React from "react"
+import Login from "./Login"
 function Home() {
     // const [count, setCount] = useState(0)
    
      return (
-      <div>vite hello</div>
+      <div><Login></Login></div>
      )
    }
    
