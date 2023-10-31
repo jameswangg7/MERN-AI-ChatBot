@@ -1,6 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { body, ValidationChain, validationResult } from "express-validator";
+// The validate function takes an array of validation chains (ValidationChain[]), where each validation chain is created using express-validator functions.
 
+// It returns an asynchronous middleware function that will run the specified validations on the request.
+
+// Inside the middleware, it iterates over the provided validation chains and runs each validation using validation.run(req). If any validation fails (i.e., the result is not empty), the loop breaks, and it proceeds to handle the errors.
+
+// After the loop, it checks for validation errors using validationResult(req). If there are no errors, it calls the next function to move on to the next middleware in the Express chain.
+
+// If there are validation errors, it sends a response with a 422 Unprocessable Entity status and a JSON object containing the validation errors.
+// result.isEmpty() Method:  The isEmpty() method is a function that you can call on the result object. It returns true if there are no validation errors, and false if there are errors.
 export const validate = (validations: ValidationChain[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     for (let validation of validations) {
