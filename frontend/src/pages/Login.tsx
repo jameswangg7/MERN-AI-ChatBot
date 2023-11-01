@@ -6,14 +6,21 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 function Login() {
-  // const [count, setCount] = useState(0)
-const handleSubmit=(e:FormEvent<HTMLFormElement>)=>{
+const auth=useAuth()
+const handleSubmit=async (e:FormEvent<HTMLFormElement>)=>{
   e.preventDefault()
   const formData= new FormData(e.currentTarget)
-  const email=formData.get('email')
-  const password=formData.get('password')
+  const email=formData.get('email') as string
+  const password=formData.get('password') as string
   console.log(email, password);
-  
+  try {
+    toast.loading("Signing In", {id:"login"})
+    await auth?.login(email,password)
+    toast.loading("Signed In successfully", {id:"login"})
+  } catch (error) {
+    console.log(error);    
+    toast.error("Signed In Failed",  {id:"login"})
+  }
 }
   return (
     <Box width={"100%"} height={"100%"} display="flex" flex={1}>

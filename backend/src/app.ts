@@ -3,9 +3,15 @@ import express from 'express'
 import morgan from 'morgan'
 import appRouter from './routes/index.js'
 import cookieParser from 'cookie-parser'
-
+import cors from 'cors'
 //config()
 const app=express()
+// const corsOptions = {
+//     origin: 'http://localhost:5173',
+//     credentials: true,  // Include credentials (cookies) in CORS requests if applicable
+//   };
+//   app.use(cors(corsOptions));
+app.use(cors())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(express.json())
 //remove it in prod
