@@ -1,8 +1,7 @@
-import { config } from "dotenv";
+//import { config } from "dotenv";
 import app from "./app.js";
-
 import { connectToDatabase } from "./db/connection.js";
-config()
+//config()
 const PORT=process.env.PORT || 5000
 connectToDatabase().then(()=>{
     app.listen(PORT,()=>{

@@ -35,7 +35,8 @@ export const userSignup = async (req: Request, res: Response, next: NextFunction
     res.cookie(COOKIE_NAME, token, {
         path: "/",
         domain: "localhost",
-        expires, httpOnly: true,
+        expires, 
+        httpOnly: true,
         signed: true,
     })
 
