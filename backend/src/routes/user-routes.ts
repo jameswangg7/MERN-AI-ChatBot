@@ -9,5 +9,5 @@ const userRoutes=Router()
 userRoutes.get('/',getAllUsers)
 userRoutes.post('/signup', validate(signupValidator), userSignup)
 userRoutes.post('/login', validate(loginValidator), userLogin)
-userRoutes.get("/auth-status", verifyToken, userLogin);
+userRoutes.get("/auth-status", verifyToken, verifyToken);
 export default userRoutes
