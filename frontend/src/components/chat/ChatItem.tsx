@@ -3,6 +3,10 @@ import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+
+
+
+
 function extractCodeFromString(message: string) {
   if (message.includes("```")) {
     const blocks = message.split("```");
